@@ -95,6 +95,97 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "input_startDate_11_4_1977_and_endDate_27_7_2018",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62a67b9c-ea73-47e6-91bd-f05cebcdcf6a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"from\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.from).to.eql(\"Friday, 11 April 1977\");",
+							"});",
+							"pm.test(\"to\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.to).to.eql(\"Friday, 27 July 2018\");",
+							"});",
+							"pm.test(\"resultDate\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.date).to.eql(\"15,083 days\");",
+							"});",
+							"pm.test(\"resultYears\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.years).to.eql(\"41 years, 3 months, 17 days \");",
+							"});",
+							"pm.test(\"resultSeconds\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.seconds).to.eql(\"1,303,171,200 seconds\");",
+							"});",
+							"pm.test(\"resultMinutes\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.minutes).to.eql(\"21,719,520 minutes\");",
+							"});",
+							"pm.test(\"resultHours\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.hours).to.eql(\"361,992 hours\");",
+							"});",
+							"pm.test(\"resultWeeks\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.weeks).to.eql(\"2154 weeks and 5 days\");",
+							"});",
+							"pm.test(\"resultPercent\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.percents).to.eql(\"4132.33% of a common year (365 days)\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/duration?StartDate=11&StartMonth=4&StartYear=1977&EndDate=27&EndMonth=7&EndYear=2018",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"duration"
+					],
+					"query": [
+						{
+							"key": "StartDate",
+							"value": "11"
+						},
+						{
+							"key": "StartMonth",
+							"value": "4"
+						},
+						{
+							"key": "StartYear",
+							"value": "1977"
+						},
+						{
+							"key": "EndDate",
+							"value": "27"
+						},
+						{
+							"key": "EndMonth",
+							"value": "7"
+						},
+						{
+							"key": "EndYear",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
