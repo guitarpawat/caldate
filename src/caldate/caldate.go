@@ -16,3 +16,7 @@ func ResultDay(startDate, endDate date) int {
 	diff := endTime.Sub(startTime)
 	return int(diff.Hours()/24) + 1
 }
+
+func convertToSecond(days int) uint64 {
+	return uint64(days * 86400)
+}
