@@ -117,7 +117,7 @@ robot duration.robot
 
 ### คำสั่ง Run Acceptance Test (API)
 ```
-newman run filename
+newman run filename //test
 ```
 
 ## Additional
