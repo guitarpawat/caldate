@@ -1,6 +1,7 @@
 package caldate
 
 import (
+	"fmt"
 	"strconv"
 	"time"
 )
@@ -20,8 +21,6 @@ func UnitWeek(targetDate int) string {
 	return result2
 }
 
-const timeFormat = "2014-05-30"
-
 func ResultDay(startDate, endDate Date) int {
 	startTime := time.Date(startDate.Year, time.Month(startDate.Month), startDate.Date, 0, 0, 0, 0, time.UTC)
 	endTime := time.Date(endDate.Year, time.Month(endDate.Month), endDate.Date, 0, 0, 0, 0, time.UTC)
@@ -35,4 +34,10 @@ func convertToSecond(days int) uint64 {
 
 func convertToMin(second uint64) uint64 {
 	return second / 60
+}
+
+func FormatDateConverter(date Date) string {
+	dateTime := time.Date(date.Year, time.Month(date.Month), date.Date, 0, 0, 0, 0, time.UTC)
+	return fmt.Sprintf("%s, %d %s %d", dateTime.Weekday().String(),
+		dateTime.Day(), dateTime.Month().String(), dateTime.Year())
 }

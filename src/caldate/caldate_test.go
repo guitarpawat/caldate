@@ -49,3 +49,12 @@ func Test_ResultDay_Input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_182(t *t
 		t.Errorf("expected %d but get %d", expected, result)
 	}
 }
+
+func Test_FormatDateConverter_Input_4_1_2018_Should_Be_Thursday_4_January_2018(t *testing.T) {
+	date := Date{Date: 4, Month: 1, Year: 2018}
+	expected := "Thursday, 4 January 2018"
+	result := FormatDateConverter(date)
+	if expected != result {
+		t.Errorf("expected %s but get %s", expected, result)
+	}
+}
