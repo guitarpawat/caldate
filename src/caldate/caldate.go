@@ -36,3 +36,4 @@ func convertToSecond(days int) uint64 {
 func convertToMin(second uint64) uint64 {
 	return second / 60
 }
+
