@@ -28,27 +28,29 @@ func toi(s string) int {
 }
 
 Type Response struct {
-	From string
-	To string
-	Result {
-		Date string
-		Year string
-		Minute string
-		Hour string
-		Week string
-		Percent string
-	}
+	From string `json:"from"`
+	To string `json:"to"`
+		Date string `json:"date"`
+		Years string `json:"years"`
+		Seconds string `json:"seconds"`
+		Minutes string `json:"minutes"`
+		Hours string `json:"hours"`
+		Weeks string `json:"weeks"`
+		Percent string `json:"percent"`
 }
 
-func toJSON(startDate Date, endDate Date){
-	days = caldate.ResultDay(startDate, endDate)
-	weeks = caldate.UnitWeek(days)
-	second = caldate.convertToSecond(days)
-	mins = caldate.convertToMin(second)
-
+func toJSON(from, to, dates, years, seconds, minutes, hours, weeks, percent string) string{
 	response := Response({
-		From: startDate
+		From: from
+		To: to
+		Dates: dates
+		Years: years
+		Seconds: seconds
+		Minutes: minutes
+		Hours:  hours
+		Weeks: weeks
+		Percent: percent
 	})
-
+	json, err := json.Marshal(response)
+    return (string(json))
 }
-
