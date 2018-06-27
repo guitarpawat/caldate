@@ -46,6 +46,14 @@ func ResultDetail(startDate, endDate Date) Date {
 	yearDiff := endDate.Year - startDate.Year
 	monthDiff := endDate.Month - startDate.Month
 	dayDiff := endDate.Date - startDate.Date + 1
+	if monthDiff < 0 {
+		yearDiff--
+		monthDiff += 12
+	}
+	if dayDiff < 0 {
+		monthDiff--
+		dayDiff += 30
+	}
 	return Date{Year: yearDiff, Month: monthDiff, Date: dayDiff}
 }
 
