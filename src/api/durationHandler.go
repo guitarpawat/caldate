@@ -20,7 +20,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "%d", caldate.ResultDay(startDate, endtDate))
 }
 
-func doAction(startDate, endDate Date, r *http.Request) {
+func doAction(startDate, endDate caldate.Date, r *http.Request) {
 	from := caldate.FormatDateConverter(startDate)
 	to := caldate.FormatDateConverter(endDate)
 	diff := caldate.ResultDay(startDate, endDate)
