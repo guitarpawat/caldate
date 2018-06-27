@@ -36,7 +36,7 @@
 							"});",
 							"pm.test(\"resultMinutes\", function () {",
 							"    var calDate = pm.response.json();",
-							"    pm.expect(calDate.minutes).to.eql(\"262,088 minutes\");",
+							"    pm.expect(calDate.minutes).to.eql(\"262,080 minutes\");",
 							"});",
 							"pm.test(\"resultHours\", function () {",
 							"    var calDate = pm.response.json();",
@@ -48,7 +48,7 @@
 							"});",
 							"pm.test(\"resultPercent\", function () {",
 							"    var calDate = pm.response.json();",
-							"    pm.expect(calDate.percents).to.eql(\"49.86% of 2018\");",
+							"    pm.expect(calDate.percent).to.eql(\"49.86% of 2018\");",
 							"});"
 						]
 					}
@@ -107,7 +107,7 @@
 						"exec": [
 							"pm.test(\"from\", function () {",
 							"    var calDate = pm.response.json();",
-							"    pm.expect(calDate.from).to.eql(\"Friday, 11 April 1977\");",
+							"    pm.expect(calDate.from).to.eql(\"Monday, 11 April 1977\");",
 							"});",
 							"pm.test(\"to\", function () {",
 							"    var calDate = pm.response.json();",
@@ -139,7 +139,7 @@
 							"});",
 							"pm.test(\"resultPercent\", function () {",
 							"    var calDate = pm.response.json();",
-							"    pm.expect(calDate.percents).to.eql(\"4132.33% of a common year (365 days)\");",
+							"    pm.expect(calDate.percent).to.eql(\"4132.33% of a common year (365 days)\");",
 							"});"
 						]
 					}
