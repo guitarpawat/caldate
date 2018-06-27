@@ -17,12 +17,14 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	endtDate := caldate.NewDate(r.FormValue("EndDate"),
 		r.FormValue("EndMonth"),
 		r.FormValue("EndYear"))
-	fmt.Fprintln(w, "%d", caldate.ResultDay(startDate, endtDate))
+	fmt.Fprintf(w, "%d", caldate.ResultDay(startDate, endtDate))
 }
 
 func doAction(startDate, endDate caldate.Date, r *http.Request) {
 	from := caldate.FormatDateConverter(startDate)
 	to := caldate.FormatDateConverter(endDate)
-	diff := caldate.ResultDay(startDate, endDate)
-	_, _, _ = from, to, diff
+	day := caldate.ResultDay(startDate, endDate)
+	second := caldate.ConvertToSecond(day)
+	minute := caldare.ConvertToMin(second)
+	week := caldate.UnitWeek(day)
 }
