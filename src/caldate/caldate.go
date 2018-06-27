@@ -14,11 +14,11 @@ func UnitWeek(targetDate int) string {
 	totalWeek := targetDate / 7
 	totalDay := targetDate % 7
 	if totalDay > 0 {
-		result1 := strconv.Itoa(totalWeek) + " weeks and " + strconv.Itoa(totalDay) + " days"
-		return result1
+		resultHaveDay := strconv.Itoa(totalWeek) + " weeks and " + strconv.Itoa(totalDay) + " days"
+		return resultHaveDay
 	}
-	result2 := strconv.Itoa(totalWeek) + " weeks"
-	return result2
+	resultNotHaveDay := strconv.Itoa(totalWeek) + " weeks"
+	return resultNotHaveDay
 }
 
 func ResultDay(startDate, endDate Date) int {

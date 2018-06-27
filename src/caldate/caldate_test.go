@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func Test_UnitWeek_Input_187_Should_Be_26_Weeks_And_5_Days(t *testing.T) {
+func Test_UnitWeek_Input_187_Should_Be_26_Weeks(t *testing.T) {
 	expected := "26 weeks"
 	targetDate := 182
 	actualDate := UnitWeek(targetDate)
