@@ -58,3 +58,19 @@ func Test_FormatDateConverter_Input_4_1_2018_Should_Be_Thursday_4_January_2018(t
 		t.Errorf("expected %s but get %s", expected, result)
 	}
 }
+func Test_CalPercent_Input_182_Should_Be_49_dot_86(t *testing.T) {
+	days := 182
+	expected := 49.86
+	result := CalPercent(days)
+	if expected != result {
+		t.Errorf("expected %.2f but get %.2f", expected, result)
+	}
+}
+func Test_CalPercent_Input_7248_Should_Be_1985_dot_75(t *testing.T) {
+	days := 7248
+	expected := 1985.75
+	result := CalPercent(days)
+	if expected != result {
+		t.Errorf("expected %.2f but get %.2f", expected, result)
+	}
+}
