@@ -7,6 +7,7 @@ import (
 	"strconv"
 )
 
+
 func Handler(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
@@ -25,3 +26,29 @@ func toi(s string) int {
 	res, _ := strconv.Atoi(s)
 	return res
 }
+
+Type Response struct {
+	From string
+	To string
+	Result {
+		Date string
+		Year string
+		Minute string
+		Hour string
+		Week string
+		Percent string
+	}
+}
+
+func toJSON(startDate Date, endDate Date){
+	days = caldate.ResultDay(startDate, endDate)
+	weeks = caldate.UnitWeek(days)
+	second = caldate.convertToSecond(days)
+	mins = caldate.convertToMin(second)
+
+	response := Response({
+		From: startDate
+	})
+
+}
+
