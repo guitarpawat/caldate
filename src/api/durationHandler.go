@@ -27,10 +27,18 @@ func doAction(startDate, endDate caldate.Date, w http.ResponseWriter) {
 	day := caldate.ResultDay(startDate, endDate)
 	second := caldate.ConvertToSecond(day)
 	minute := caldate.ConvertToMin(second)
+	hour := caldate.ConvertToHour(minute)
 	week := caldate.UnitWeek(day)
-	jsonStr, err := toJSON(from, to, fmt.Sprintf("%d", day), "years",
-		fmt.Sprintf("%d", second), fmt.Sprintf("%d", minute), "hours",
-		week, "percent")
+	percent := caldate.CalPercent(day)
+	percentStr := ""
+	if startDate.Year == endDate.Year {
+		percentStr = fmt.Sprintf("%.2f%% of %d", percent, startDate.Year)
+	} else {
+		percentStr = fmt.Sprintf("%.2f%% of a common year (365 days)", percent)
+	}
+	jsonStr, err := toJSON(from, to, fmt.Sprintf("%d days", day), "years",
+		fmt.Sprintf("%d seconds", second), fmt.Sprintf("%d minutes", minute),
+		fmt.Sprintf("%d hours", hour), week, percentStr)
 	if err != nil {
 		http.Error(w, "Internal Server Error: "+err.Error(), 500)
 		return
