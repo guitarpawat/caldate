@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "20adf049-8973-4f24-ae47-75122e7b343c",
+		"name": "testCaldate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "input_startDate_4_1_2018_and_endDate_4_7_2018",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7bbcf56-7e84-471f-a63c-3ee1529f3e5e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"from\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.from).to.eql(\"Thursday, 4 January 2018\");",
+							"});",
+							"pm.test(\"to\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.to).to.eql(\"Wednesday, 4 July 2018\");",
+							"});",
+							"pm.test(\"resultDate\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.date).to.eql(\"182 days\");",
+							"});",
+							"pm.test(\"resultYears\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.years).to.eql(\"6 months, 1 day\");",
+							"});",
+							"pm.test(\"resultSeconds\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.seconds).to.eql(\"15,724,800 seconds\");",
+							"});",
+							"pm.test(\"resultMinutes\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.minutes).to.eql(\"262,088 minutes\");",
+							"});",
+							"pm.test(\"resultHours\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.hours).to.eql(\"4,368 hours\");",
+							"});",
+							"pm.test(\"resultWeeks\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.weeks).to.eql(\"26 weeks\");",
+							"});",
+							"pm.test(\"resultPercent\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.percents).to.eql(\"49.86% of 2018\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/duration?StartDate=4&StartMonth=1&StartYear=2018&EndDate=4&EndMonth=7&EndYear=2018",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"duration"
+					],
+					"query": [
+						{
+							"key": "StartDate",
+							"value": "4"
+						},
+						{
+							"key": "StartMonth",
+							"value": "1"
+						},
+						{
+							"key": "StartYear",
+							"value": "2018"
+						},
+						{
+							"key": "EndDate",
+							"value": "4"
+						},
+						{
+							"key": "EndMonth",
+							"value": "7"
+						},
+						{
+							"key": "EndYear",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "input_startDate_11_4_1977_and_endDate_27_7_2018",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62a67b9c-ea73-47e6-91bd-f05cebcdcf6a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"from\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.from).to.eql(\"Friday, 11 April 1977\");",
+							"});",
+							"pm.test(\"to\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.to).to.eql(\"Friday, 27 July 2018\");",
+							"});",
+							"pm.test(\"resultDate\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.date).to.eql(\"15,083 days\");",
+							"});",
+							"pm.test(\"resultYears\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.years).to.eql(\"41 years, 3 months, 17 days \");",
+							"});",
+							"pm.test(\"resultSeconds\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.seconds).to.eql(\"1,303,171,200 seconds\");",
+							"});",
+							"pm.test(\"resultMinutes\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.minutes).to.eql(\"21,719,520 minutes\");",
+							"});",
+							"pm.test(\"resultHours\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.hours).to.eql(\"361,992 hours\");",
+							"});",
+							"pm.test(\"resultWeeks\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.weeks).to.eql(\"2154 weeks and 5 days\");",
+							"});",
+							"pm.test(\"resultPercent\", function () {",
+							"    var calDate = pm.response.json();",
+							"    pm.expect(calDate.result.percents).to.eql(\"4132.33% of a common year (365 days)\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/duration?StartDate=11&StartMonth=4&StartYear=1977&EndDate=27&EndMonth=7&EndYear=2018",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"duration"
+					],
+					"query": [
+						{
+							"key": "StartDate",
+							"value": "11"
+						},
+						{
+							"key": "StartMonth",
+							"value": "4"
+						},
+						{
+							"key": "StartYear",
+							"value": "1977"
+						},
+						{
+							"key": "EndDate",
+							"value": "27"
+						},
+						{
+							"key": "EndMonth",
+							"value": "7"
+						},
+						{
+							"key": "EndYear",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
