@@ -74,3 +74,12 @@ func Test_CalPercent_Input_7248_Should_Be_1985_dot_75(t *testing.T) {
 		t.Errorf("expected %.2f but get %.2f", expected, result)
 	}
 }
+
+func Test_ConvertToHour_Input_262080_Should_Be_4368(t *testing.T) {
+	var minute uint64 = 262080
+	var expected uint64 = 4368
+	result := ConvertToHour(minute)
+	if expected != result {
+		t.Errorf("expected %d but get %d", expected, result)
+	}
+}
