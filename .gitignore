@@ -15,3 +15,8 @@
 bin
 pkg
 *.bak
+
+# Robot File
+ATDD/ui/*.html
+ATDD/ui/*.xml
+ATDD/ui/*.png
