@@ -28,11 +28,11 @@ func ResultDay(startDate, endDate Date) int {
 	return int(diff.Hours()/24) + 1
 }
 
-func convertToSecond(days int) uint64 {
+func ConvertToSecond(days int) uint64 {
 	return uint64(days * 86400)
 }
 
-func convertToMin(second uint64) uint64 {
+func ConvertToMin(second uint64) uint64 {
 	return second / 60
 }
 
