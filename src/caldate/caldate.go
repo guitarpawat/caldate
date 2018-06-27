@@ -41,3 +41,16 @@ func FormatDateConverter(date Date) string {
 	return fmt.Sprintf("%s, %d %s %d", dateTime.Weekday().String(),
 		dateTime.Day(), dateTime.Month().String(), dateTime.Year())
 }
+
+func toi(s string) int {
+	res, _ := strconv.Atoi(s)
+	return res
+}
+
+func NewDate(date, month, year string) Date {
+	return Date{
+		Date:  toi(date),
+		Month: toi(month),
+		Year:  toi(year),
+	}
+}
