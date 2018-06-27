@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func Test_UnitWeek_Input_187_Should_Be_26_Weeks_And_5_Days(t *testing.T) {
+func Test_UnitWeek_Input_187_Should_Be_26_Weeks(t *testing.T) {
 	expected := "26 weeks"
 	targetDate := 182
 	actualDate := UnitWeek(targetDate)
@@ -23,7 +23,7 @@ func Test_UnitWeek_Input_182_Should_Be_26_Weeks_And_5_Days(t *testing.T) {
 func Test_ConvertToSecond_Input_182_Should_Be_15724800(t *testing.T) {
 	expected := uint64(15724800)
 	days := 182
-	actual := convertToSecond(days)
+	actual := ConvertToSecond(days)
 
 	if actual != expected {
 		t.Errorf("expected %d but got %d", uint64(expected), uint64(actual))
@@ -33,7 +33,7 @@ func Test_ConvertToSecond_Input_182_Should_Be_15724800(t *testing.T) {
 func Test_ConvertToMin_Input_15724806_Should_Be_262080(t *testing.T) {
 	expected := uint64(262080)
 	second := uint64(15724806)
-	actual := uint64(convertToMin(second))
+	actual := uint64(ConvertToMin(second))
 
 	if actual != expected {
 		t.Errorf("expected %d but got %d", uint64(expected), uint64(actual))
