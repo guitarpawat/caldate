@@ -52,7 +52,6 @@
             `&EndDate=${$('#EndDate').val()}` +
             `&EndMonth=${$('#EndMonth').val()}` +
             `&EndYear=${$('#EndYear').val()}`
-            alert(parameter)
         var url = host + parameter
         $.getJSON(url, function (responseData) {
             $('#from').html(responseData.from)
