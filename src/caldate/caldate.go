@@ -42,11 +42,18 @@ type DetailStruct struct {
 	Year, Month, Day int
 }
 
+func ResultDetail(startDate, endDate Date) Date {
+	yearDiff := endDate.Year - startDate.Year
+	monthDiff := endDate.Month - startDate.Month
+	dayDiff := endDate.Date - startDate.Date + 1
+	return Date{Year: yearDiff, Month: monthDiff, Date: dayDiff}
+}
+
 func (a Date) ResultDetailSameYear(endDate Date) bool {
 	return a.Year == endDate.Year
 }
 
-func diff(a, b time.Time) (year, month, day, hour, min, sec int) {
+func diff(a, b time.Time) (year, month, day int) {
 	if a.Location() != b.Location() {
 		b = b.In(a.Location())
 	}
@@ -56,29 +63,10 @@ func diff(a, b time.Time) (year, month, day, hour, min, sec int) {
 	y1, M1, d1 := a.Date()
 	y2, M2, d2 := b.Date()
 
-	h1, m1, s1 := a.Clock()
-	h2, m2, s2 := b.Clock()
-
 	year = int(y2 - y1)
 	month = int(M2 - M1)
 	day = int(d2 - d1)
-	hour = int(h2 - h1)
-	min = int(m2 - m1)
-	sec = int(s2 - s1)
 
-	// Normalize negative values
-	if sec < 0 {
-		sec += 60
-		min--
-	}
-	if min < 0 {
-		min += 60
-		hour--
-	}
-	if hour < 0 {
-		hour += 24
-		day--
-	}
 	if day < 0 {
 		// days in month:
 		t := time.Date(y1, M1, 32, 0, 0, 0, 0, time.UTC)
@@ -89,9 +77,9 @@ func diff(a, b time.Time) (year, month, day, hour, min, sec int) {
 		month += 12
 		year--
 	}
-
 	return
 }
+
 func FormatDateConverter(date Date) string {
 	dateTime := time.Date(date.Year, time.Month(date.Month), date.Date, 0, 0, 0, 0, time.UTC)
 	return fmt.Sprintf("%s, %d %s %d", dateTime.Weekday().String(),
