@@ -50,6 +50,26 @@ func Test_ResultDay_Input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_182(t *t
 	}
 }
 
+func Test_ResultDetail_input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_0_6_1(t *testing.T) {
+	startDate := Date{Date: 4, Month: 1, Year: 2018}
+	endDate := Date{Date: 4, Month: 7, Year: 2018}
+	expected := Date{Date: 1, Month: 6, Year: 0}
+	result := ResultDetail(startDate, endDate)
+	if expected != result {
+		t.Errorf("expected %v but get %v", expected, result)
+	}
+}
+
+func Test_ResultDetail_input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_True(t *testing.T) {
+	startDate := Date{Date: 4, Month: 1, Year: 2018}
+	endDate := Date{Date: 4, Month: 7, Year: 2018}
+	expected := true
+	result := startDate.ResultDetailSameYear(endDate)
+	if expected != result {
+		t.Errorf("expected %v but get %v", expected, result)
+	}
+}
+
 func Test_FormatDateConverter_Input_4_1_2018_Should_Be_Thursday_4_January_2018(t *testing.T) {
 	date := Date{Date: 4, Month: 1, Year: 2018}
 	expected := "Thursday, 4 January 2018"

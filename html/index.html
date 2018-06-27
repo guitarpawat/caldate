@@ -1,22 +1,70 @@
-<html>
-    <head>
+<html lang="en">
 
-    </head>
-    <body>
-        <form align="center" id="dateSubmit" name = "dateSubmit" action="/duration" method="">
-            <div id="startField" name="startField">
-                </br>Start:&emsp;Date <input type="text" name="StartDate">&emsp;
-                Month <input type="text" name="StartMonth">&emsp;
-                Year <input type="text" name="StartYear"></br></br>
-            </div>
-            <div id="endField" name="endField">
-                End: &emsp;Date <input type="text" name="EndDate">&emsp;
-                Month <input type="text" name="EndMonth">&emsp;
-                Year <input type="text" name="EndYear"></br></br></br>
-            </div>
-            <div>
-                <input type="submit" class="button" id="button" value="Calculate">
-            </div>
-        </form>
-    </body>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div align="center" id="startField" name="startField">
+        </br>Start:&emsp;Date
+        <input type="text" id="StartDate">&emsp; Month
+        <input type="text" id="StartMonth">&emsp; Year
+        <input type="text" id="StartYear">
+        </br>
+        </br>
+    </div>
+    <div align="center" id="endField" name="endField">
+        End: &emsp;Date
+        <input type="text" id="EndDate">&emsp; Month
+        <input type="text" id="EndMonth">&emsp; Year
+        <input type="text" id="EndYear">
+        </br>
+        </br>
+        </br>
+    </div>
+    <div align="center">
+        <button name="button" class="button" id="button">Calculate</button>
+        </br>
+        </br>
+        </br>
+    </div>
+    <div id="from"></div>
+    <div id="to"></div>
+    <div id="date"></div>
+    <div id="years"></div>
+    <div id="seconds"></div>
+    <div id="minutes"></div>
+    <div id="hours"></div>
+    <div id="weeks"></div>
+    <div id="percent"></div>
+
+</body>
+<script>
+    $(function () {
+        $('button').click(CallApi)
+    })
+    function CallApi()
+    {
+        var host = "/duration";
+        var parameter = `?StartDate=${$('#StartDate').val()}` +
+            `&StartMonth=${$('#StartMonth').val()}` +
+            `&StartYear=${$('#StartYear').val()}` +
+            `&EndDate=${$('#EndDate').val()}` +
+            `&EndMonth=${$('#EndMonth').val()}` +
+            `&EndYear=${$('#EndYear').val()}`
+        var url = host + parameter
+        $.getJSON(url, function (responseData) {
+            $('#from').html(responseData.from)
+            $('#to').html(responseData.to)
+            $('#date').html(responseData.date)
+            $('#years').html(responseData.years)
+            $('#second').html(responseData.seconds)
+            $('#minutes').html(responseData.minutes)
+            $('#hours').html(responseData.hours)
+            $('#weeks').html(responseData.weeks)
+            $('#percent').html(responseData.percent)
+        })
+    }
+</script>
+
 </html>

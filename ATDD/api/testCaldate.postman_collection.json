@@ -119,7 +119,7 @@
 							"});",
 							"pm.test(\"resultYears\", function () {",
 							"    var calDate = pm.response.json();",
-							"    pm.expect(calDate.years).to.eql(\"41 years, 3 months, 17 days \");",
+							"    pm.expect(calDate.years).to.eql(\"41 years, 3 months, 17 days\");",
 							"});",
 							"pm.test(\"resultSeconds\", function () {",
 							"    var calDate = pm.response.json();",
