@@ -59,6 +59,7 @@ func Test_ResultDetail_input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_0_6_1
 		t.Errorf("expected %v but get %v", expected, result)
 	}
 }
+
 func Test_ResultDetail_input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_True(t *testing.T) {
 	startDate := Date{Date: 4, Month: 1, Year: 2018}
 	endDate := Date{Date: 4, Month: 7, Year: 2018}
