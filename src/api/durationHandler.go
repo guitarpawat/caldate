@@ -28,24 +28,25 @@ func doAction(startDate, endDate caldate.Date, r *http.Request) {
 	second := caldate.ConvertToSecond(day)
 	minute := caldare.ConvertToMin(second)
 	week := caldate.UnitWeek(day)
+	response := toJSON(from, to, day, "", second, minute, "", week, "")
 }
 
-Type Response struct {
+type Response struct {
 	From string `json:"from"`
 	To string `json:"to"`
-		Date string `json:"date"`
-		Years string `json:"years"`
-		Seconds string `json:"seconds"`
-		Minutes string `json:"minutes"`
-		Hours string `json:"hours"`
-		Weeks string `json:"weeks"`
-		Percent string `json:"percent"`
+	Date string `json:"date"`
+	Years string `json:"years"`
+	Seconds string `json:"seconds"`
+	Minutes string `json:"minutes"`
+	Hours string `json:"hours"`
+	Weeks string `json:"weeks"`
+	Percent string `json:"percent"`
 }
 
 func toJSON(from, to, dates, years, seconds, minutes, hours, weeks, percent string) string{
 	response := Response({
-		From: from
-		To: to
+		From: from,
+		To: to,
 		Dates: dates
 		Years: years
 		Seconds: seconds
