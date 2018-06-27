@@ -2,9 +2,9 @@ package caldate
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 	"time"
-	"math"
 )
 
 type Date struct {
@@ -42,7 +42,7 @@ type DetailStruct struct {
 	Year, Month, Day int
 }
 
-func (a date) ResultDetailSameYear(endDate date) bool {
+func (a Date) ResultDetailSameYear(endDate Date) bool {
 	return a.Year == endDate.Year
 }
 
@@ -91,14 +91,15 @@ func diff(a, b time.Time) (year, month, day, hour, min, sec int) {
 	}
 
 	return
+}
 func FormatDateConverter(date Date) string {
 	dateTime := time.Date(date.Year, time.Month(date.Month), date.Date, 0, 0, 0, 0, time.UTC)
 	return fmt.Sprintf("%s, %d %s %d", dateTime.Weekday().String(),
 		dateTime.Day(), dateTime.Month().String(), dateTime.Year())
 }
 
-func CalPercent(days int) float64{
-	percentile := math.Round(((float64(days) * 100) / 365)*100)/100
+func CalPercent(days int) float64 {
+	percentile := math.Round(((float64(days)*100)/365)*100) / 100
 	return float64(percentile)
 }
 func toi(s string) int {

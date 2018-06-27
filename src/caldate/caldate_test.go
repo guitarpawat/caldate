@@ -51,8 +51,8 @@ func Test_ResultDay_Input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_182(t *t
 }
 
 func Test_ResultDetail_input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_0_6_1(t *testing.T) {
-	startDate := date{Date: 4, Month: 1, Year: 2018}
-	endDate := date{Date: 4, Month: 7, Year: 2018}
+	startDate := Date{Date: 4, Month: 1, Year: 2018}
+	endDate := Date{Date: 4, Month: 7, Year: 2018}
 	expected := DetailStruct{Year: 0, Month: 6, Day: 1}
 	result := ResultDetail(startDate, endDate)
 	if expected != result {
@@ -61,8 +61,8 @@ func Test_ResultDetail_input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_0_6_1
 }
 
 func Test_ResultDetail_input_StartDate_4_1_2018_EndDate_4_7_2018_Should_Be_True(t *testing.T) {
-	startDate := date{Date: 4, Month: 1, Year: 2018}
-	endDate := date{Date: 4, Month: 7, Year: 2018}
+	startDate := Date{Date: 4, Month: 1, Year: 2018}
+	endDate := Date{Date: 4, Month: 7, Year: 2018}
 	expected := true
 	result := startDate.ResultDetailSameYear(endDate)
 	if expected != result {
