@@ -12,7 +12,7 @@ import (
 func main() {
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/duration", api.Handler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8000", nil))
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
