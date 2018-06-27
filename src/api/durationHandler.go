@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -27,10 +28,36 @@ func doAction(startDate, endDate caldate.Date, w http.ResponseWriter) {
 	day := caldate.ResultDay(startDate, endDate)
 	second := caldate.ConvertToSecond(day)
 	minute := caldate.ConvertToMin(second)
+	hour := caldate.ConvertToHour(minute)
 	week := caldate.UnitWeek(day)
-	jsonStr, err := toJSON(from, to, fmt.Sprintf("%d", day), "years",
-		fmt.Sprintf("%d", second), fmt.Sprintf("%d", minute), "hours",
-		week, "percent")
+	percent := caldate.CalPercent(day)
+	percentStr := ""
+	if startDate.Year == endDate.Year {
+		percentStr = fmt.Sprintf("%.2f%% of %d", percent, startDate.Year)
+	} else {
+		percentStr = fmt.Sprintf("%.2f%% of a common year (365 days)", percent)
+	}
+	result := caldate.ResultDetail(startDate, endDate)
+	var resultSlice []string
+	if result.Year == 1 {
+		resultSlice = append(resultSlice, fmt.Sprintf("%d year", result.Year))
+	} else if result.Year != 0 {
+		resultSlice = append(resultSlice, fmt.Sprintf("%d years", result.Year))
+	}
+	if result.Month == 1 {
+		resultSlice = append(resultSlice, fmt.Sprintf("%d month", result.Month))
+	} else if result.Month != 0 {
+		resultSlice = append(resultSlice, fmt.Sprintf("%d months", result.Month))
+	}
+	if result.Date == 1 {
+		resultSlice = append(resultSlice, fmt.Sprintf("%d day", result.Date))
+	} else if result.Date != 0 {
+		resultSlice = append(resultSlice, fmt.Sprintf("%d days", result.Date))
+	}
+	resultString := strings.Join(resultSlice, ", ")
+	jsonStr, err := toJSON(from, to, fmt.Sprintf("%d days", day), resultString,
+		fmt.Sprintf("%d seconds", second), fmt.Sprintf("%d minutes", minute),
+		fmt.Sprintf("%d hours", hour), week, percentStr)
 	if err != nil {
 		http.Error(w, "Internal Server Error: "+err.Error(), 500)
 		return
